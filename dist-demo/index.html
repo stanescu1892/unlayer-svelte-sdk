@@ -2,11 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="./vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte + TS</title>
-    <script type="module" crossorigin src="/assets/index-MQRx5Yu4.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-ETecdgH0.css">
+    <title>Unlayer Svelte SDK - Email Editor Demo</title>
+    <script>
+      // Polyfill for process global that some CDN scripts expect
+      window.process = {
+        env: {},
+        platform: 'browser',
+        version: 'v18.0.0'
+      };
+    </script>
+    <script type="module" crossorigin src="./assets/index-BXB4nCiE.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-C2k26jNV.css">
   </head>
   <body>
     <div id="app"></div>
