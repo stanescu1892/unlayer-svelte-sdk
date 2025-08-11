@@ -10,7 +10,7 @@ export default defineConfig({
       output: {
         manualChunks: undefined,
         chunkFileNames: 'assets/[name]-[hash].js',
-        entryFileNames: 'assets/[name]-[hash].js',
+        entryFileNames: 'assets/[name]-[hash].mjs',
         assetFileNames: 'assets/[name]-[hash].[ext]'
       }
     },
