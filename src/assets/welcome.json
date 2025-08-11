@@ -1,0 +1,84 @@
+{
+  "body": {
+    "rows": [
+      {
+        "cells": [
+          {
+            "content": {
+              "blocks": [
+                {
+                  "type": "text",
+                  "data": {
+                    "text": "Welcome to Our Platform!",
+                    "textAlign": "center",
+                    "fontSize": "32px",
+                    "fontWeight": "bold",
+                    "color": "#333333",
+                    "lineHeight": "1.2"
+                  }
+                }
+              ]
+            },
+            "width": "100%",
+            "padding": "20px"
+          }
+        ],
+        "backgroundColor": "#ffffff"
+      },
+      {
+        "cells": [
+          {
+            "content": {
+              "blocks": [
+                {
+                  "type": "text",
+                  "data": {
+                    "text": "We're excited to have you on board. This is a sample email template that you can customize using the Unlayer editor.",
+                    "textAlign": "left",
+                    "fontSize": "16px",
+                    "color": "#666666",
+                    "lineHeight": "1.5"
+                  }
+                }
+              ]
+            },
+            "width": "100%",
+            "padding": "20px"
+          }
+        ],
+        "backgroundColor": "#f8f9fa"
+      },
+      {
+        "cells": [
+          {
+            "content": {
+              "blocks": [
+                {
+                  "type": "button",
+                  "data": {
+                    "text": "Get Started",
+                    "backgroundColor": "#007bff",
+                    "color": "#ffffff",
+                    "fontSize": "18px",
+                    "fontWeight": "bold",
+                    "borderRadius": "5px",
+                    "padding": "15px 30px",
+                    "textAlign": "center"
+                  }
+                }
+              ]
+            },
+            "width": "100%",
+            "padding": "20px",
+            "textAlign": "center"
+          }
+        ],
+        "backgroundColor": "#ffffff"
+      }
+    ]
+  },
+  "design": {
+    "width": "600px",
+    "backgroundColor": "#ffffff"
+  }
+}
