@@ -390,19 +390,7 @@ MIT License - see [LICENSE](LICENSE) file for details.
 - **TypeScript Errors**: Ensure you're using Svelte 5+ and TypeScript 5+
 - **Build Issues**: Clear node_modules and reinstall dependencies
 
-## 🎯 Roadmap
 
-### v0.2.0
-- [ ] Unit tests with Vitest
-- [ ] Performance optimizations
-- [ ] Additional tool configurations
-- [ ] Accessibility improvements
-
-### v0.3.0
-- [ ] React compatibility layer
-- [ ] Vue compatibility layer
-- [ ] Advanced theming system
-- [ ] Plugin architecture
 
 ## 🙏 Acknowledgments
 
