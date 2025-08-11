@@ -4,6 +4,11 @@ import { svelte } from '@sveltejs/vite-plugin-svelte'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [svelte()],
+  define: {
+    'process.env': {},
+    'process.platform': '"browser"',
+    'process.version': '"v18.0.0"'
+  },
   build: {
     outDir: 'dist-demo',
     rollupOptions: {

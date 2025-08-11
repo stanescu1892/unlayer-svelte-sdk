@@ -60,64 +60,57 @@
   // Multiple CDN sources for fallback
   const CDN_SOURCES = [
     'https://editor.unlayer.com/embed.js',
-    'https://unpkg.com/react-email-editor@latest/dist/index.js',
-    'https://cdn.jsdelivr.net/npm/react-email-editor@latest/dist/index.js'
+    'https://unpkg.com/unlayer@latest/dist/index.js',
+    'https://cdn.jsdelivr.net/npm/unlayer@latest/dist/index.js'
   ];
 
   // Load Unlayer script dynamically with fallbacks
   async function loadUnlayerScript(): Promise<void> {
-    return new Promise((resolve, reject) => {
-      // Check if already loaded
-      if (window.UnlayerEditor || window.EmailEditor) {
-        resolve();
-        return;
-      }
-
-      let currentSourceIndex = 0;
-
-      const tryLoadScript = () => {
-        if (currentSourceIndex >= CDN_SOURCES.length) {
-          // All CDN sources failed, create a mock editor
-          console.warn('All CDN sources failed, creating mock editor');
-          createMockEditor();
-          resolve();
-          return;
-        }
-
+    console.log('Attempting to load Unlayer script from CDN...');
+    
+    for (const cdnUrl of CDN_SOURCES) {
+      try {
+        console.log(`Trying CDN: ${cdnUrl}`);
+        
         const script = document.createElement('script');
-        script.src = CDN_SOURCES[currentSourceIndex];
+        script.src = cdnUrl;
         script.type = 'text/javascript';
+        script.async = true;
         
-        script.onload = () => {
-          console.log(`Script loaded successfully from: ${CDN_SOURCES[currentSourceIndex]}`);
-          
-          // Check which global variable is available
-          if (window.UnlayerEditor) {
-            console.log('UnlayerEditor global found');
+        const loadPromise = new Promise<void>((resolve, reject) => {
+          script.onload = () => {
+            console.log(`Successfully loaded from: ${cdnUrl}`);
             resolve();
-          } else if (window.EmailEditor) {
-            console.log('EmailEditor global found');
-            // Map EmailEditor to UnlayerEditor for compatibility
-            window.UnlayerEditor = window.EmailEditor;
-            resolve();
-          } else {
-            console.warn('No expected global variable found, trying next source');
-            currentSourceIndex++;
-            tryLoadScript();
-          }
-        };
+          };
+          script.onerror = () => {
+            console.warn(`Failed to load from: ${cdnUrl}`);
+            reject(new Error(`Failed to load from ${cdnUrl}`));
+          };
+        });
         
-        script.onerror = () => {
-          console.warn(`Failed to load from: ${CDN_SOURCES[currentSourceIndex]}`);
-          currentSourceIndex++;
-          tryLoadScript();
-        };
-
         document.head.appendChild(script);
-      };
-
-      tryLoadScript();
-    });
+        
+        // Wait for script to load
+        await loadPromise;
+        
+        // Check if UnlayerEditor is available
+        if (window.UnlayerEditor || window.EmailEditor) {
+          console.log('UnlayerEditor global found:', window.UnlayerEditor || window.EmailEditor);
+          return;
+        } else {
+          console.warn('Script loaded but UnlayerEditor global not found');
+          // Remove the script and try next source
+          document.head.removeChild(script);
+        }
+      } catch (error) {
+        console.warn(`CDN source failed: ${cdnUrl}`, error);
+        continue;
+      }
+    }
+    
+    // If all CDNs fail, create mock editor
+    console.warn('All CDN sources failed, creating mock editor');
+    createMockEditor();
   }
 
   // Create a mock editor when CDN fails

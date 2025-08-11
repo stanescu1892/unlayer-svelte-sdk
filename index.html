@@ -5,6 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Unlayer Svelte SDK - Email Editor Demo</title>
+    <script>
+      // Polyfill for process global that some CDN scripts expect
+      window.process = {
+        env: {},
+        platform: 'browser',
+        version: 'v18.0.0'
+      };
+    </script>
   </head>
   <body>
     <div id="app"></div>
