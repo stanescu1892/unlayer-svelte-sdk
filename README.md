@@ -315,7 +315,7 @@ The repository includes a complete demo application showcasing all features:
 4. **Responsive Layout**: Mobile-friendly interface
 5. **Error Handling**: Graceful error handling and user feedback
 
-### Build for Production
+### Build for Production 
 
 ```bash
 # Build the library
