@@ -14,19 +14,22 @@
     {
       "src": "/assets/(.*)\\.js",
       "headers": {
-        "Content-Type": "application/javascript"
+        "Content-Type": "application/javascript",
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     },
     {
       "src": "/assets/(.*)\\.mjs",
       "headers": {
-        "Content-Type": "application/javascript"
+        "Content-Type": "application/javascript",
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     },
     {
       "src": "/assets/(.*)\\.css",
       "headers": {
-        "Content-Type": "text/css"
+        "Content-Type": "text/css",
+        "Cache-Control": "no-cache, no-store, must-revalidate"
       }
     },
     {
